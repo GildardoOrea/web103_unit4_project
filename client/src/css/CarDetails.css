@@ -1,0 +1,44 @@
+.detail-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    align-items: center;
+}
+
+@media (max-width: 800px) {
+    .detail-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+.detail-preview {
+    background: rgba(0, 0, 0, 0.75);
+    border-radius: 12px;
+    padding: 24px;
+}
+
+.detail-specs table {
+    width: 100%;
+}
+
+.detail-specs td {
+    padding: 8px 6px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.detail-specs .right {
+    text-align: right;
+}
+
+.detail-specs .total td {
+    border-bottom: none;
+    font-size: 1.2rem;
+}
+
+.detail-specs footer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 16px;
+    border-top: 0;
+}

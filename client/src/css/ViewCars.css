@@ -1,0 +1,44 @@
+.car-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.car-card {
+    background: rgba(0, 0, 0, 0.78);
+    border-radius: 12px;
+    padding: 18px;
+    text-align: center;
+}
+
+.car-card h3 {
+    margin: 8px 0 0;
+}
+
+.car-card .card-price {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin: 4px 0;
+}
+
+.car-card .card-specs {
+    opacity: 0.75;
+    font-size: 0.85rem;
+    margin-bottom: 10px;
+}
+
+.car-card footer {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    border-top: 0;
+}
+
+.car-card footer [role=button],
+.car-card footer button {
+    margin: 4px !important;
+    padding: 6px 12px;
+    font-size: 0.8rem;
+}
