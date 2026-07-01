@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useParams, useNavigate, Link } from 'react-router-dom'
 import { getCar, deleteCar } from '../services/CarsAPI'
-import { getExteriorColor, getOptionPrice } from '../utilities/calcprice'
+import { getOptionPrice } from '../utilities/calcprice'
 import CarVisual from '../components/CarVisual'
 import '../App.css'
 import '../css/CarDetails.css'
@@ -43,10 +43,7 @@ const CarDetails = ({ title }) => {
 
             <div className='detail-layout'>
                 <div className='detail-preview'>
-                    <CarVisual
-                        color={getExteriorColor(car.exterior)}
-                        convertible={car.roof === 'Convertible'}
-                    />
+                    <CarVisual car={car} />
                 </div>
 
                 <article className='detail-specs'>

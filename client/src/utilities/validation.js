@@ -27,18 +27,3 @@ export const validateCar = (car) => {
     }
     return { valid: true, message: '' }
 }
-
-// Given the current selections, returns the list of options that should be
-// disabled because they'd conflict. Powers the "early warning" stretch feature.
-export const getConflicts = (car) => {
-    const conflicts = []
-    for (const rule of incompatibleCombos) {
-        if (car[rule.feature1] === rule.value1) {
-            conflicts.push({ feature: rule.feature2, value: rule.value2 })
-        }
-        if (car[rule.feature2] === rule.value2) {
-            conflicts.push({ feature: rule.feature1, value: rule.value1 })
-        }
-    }
-    return conflicts
-}

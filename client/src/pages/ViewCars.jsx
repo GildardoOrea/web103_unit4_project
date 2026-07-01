@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { getAllCars, deleteCar } from '../services/CarsAPI'
-import { getExteriorColor } from '../utilities/calcprice'
 import CarVisual from '../components/CarVisual'
 import '../App.css'
 import '../css/ViewCars.css'
@@ -37,10 +36,7 @@ const ViewCars = ({ title }) => {
                 <div className='car-grid'>
                     {cars.map((car) => (
                         <article key={car.id} className='car-card'>
-                            <CarVisual
-                                color={getExteriorColor(car.exterior)}
-                                convertible={car.roof === 'Convertible'}
-                            />
+                            <CarVisual car={car} />
                             <h3>{car.name}</h3>
                             <p className='card-price'>${Number(car.price).toLocaleString()}</p>
                             <p className='card-specs'>

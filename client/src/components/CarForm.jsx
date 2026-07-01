@@ -1,6 +1,5 @@
 import React from 'react'
-import { options, calculatePrice, getExteriorColor } from '../utilities/calcprice'
-import { getConflicts } from '../utilities/validation'
+import { options, calculatePrice } from '../utilities/calcprice'
 import CarVisual from './CarVisual'
 import '../css/CarForm.css'
 
@@ -13,11 +12,6 @@ const features = [
 
 // Shared build form used by both Create and Edit pages.
 const CarForm = ({ car, setCar, onSubmit, error, submitLabel }) => {
-    // Options that would create an impossible combo, given current picks.
-    const conflicts = getConflicts(car)
-    const isDisabled = (feature, value) =>
-        conflicts.some((c) => c.feature === feature && c.value === value)
-
     const selectOption = (feature, value) => {
         setCar({ ...car, [feature]: value })
     }
@@ -25,10 +19,7 @@ const CarForm = ({ car, setCar, onSubmit, error, submitLabel }) => {
     return (
         <div className='car-form'>
             <div className='car-preview'>
-                <CarVisual
-                    color={getExteriorColor(car.exterior)}
-                    convertible={car.roof === 'Convertible'}
-                />
+                <CarVisual car={car} />
                 <h2 className='price'>${calculatePrice(car).toLocaleString()}</h2>
                 <p className='summary'>
                     {car.exterior} • {car.roof} • {car.wheels} • {car.interior}
@@ -52,16 +43,13 @@ const CarForm = ({ car, setCar, onSubmit, error, submitLabel }) => {
                         <legend>{f.label}</legend>
                         <div className='option-group'>
                             {options[f.key].map((opt) => {
-                                const disabled = isDisabled(f.key, opt.name)
                                 const selected = car[f.key] === opt.name
                                 return (
                                     <button
                                         type='button'
                                         key={opt.name}
-                                        className={`option-btn${selected ? ' selected' : ''}${disabled ? ' disabled' : ''}`}
-                                        onClick={() => !disabled && selectOption(f.key, opt.name)}
-                                        disabled={disabled}
-                                        title={disabled ? 'Not available with your current selection' : ''}
+                                        className={`option-btn${selected ? ' selected' : ''}`}
+                                        onClick={() => selectOption(f.key, opt.name)}
                                     >
                                         {f.key === 'exterior' && (
                                             <span className='swatch' style={{ background: opt.color }} />

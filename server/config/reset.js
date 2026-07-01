@@ -7,7 +7,7 @@ dotenv.config()
 const carData = [
     { name: 'Midnight Runner', exterior: 'Midnight Black', roof: 'Sun Roof', wheels: 'Sport', interior: 'Leather', price: 21800 },
     { name: 'Trail Boss', exterior: 'Forest Green', roof: 'Hard Top', wheels: 'Off-Road', interior: 'Cloth', price: 20300 },
-    { name: 'Sunny Cruiser', exterior: 'Sunburst Yellow', roof: 'Convertible', wheels: 'Standard', interior: 'Premium Leather', price: 22600 }
+    { name: 'Sunny Cruiser', exterior: 'Sunburst Yellow', roof: 'Convertible', wheels: 'Standard', interior: 'Leather', price: 21600 }
 ]
 
 const createCarsTable = async () => {
